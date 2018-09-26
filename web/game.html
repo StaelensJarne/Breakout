@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Breakworld</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="assets/style/reset.css">
+        <link rel="stylesheet" type="text/css" href="assets/style/style.css">
+
+    </head>
+    <body>
+        <header>
+            <h1>BREAKWORLD</h1>
+        </header>
+        
+        <canvas id="canvasBreakout" width="1100" height="600"></canvas>
+        
+        <div id="nextLevelGeneral">
+                <h3> Congratulations ! </h3>
+                <p> Go to the next level</p>
+                <p>Your current score is: <span class="score"></span></p>
+                <button class="popupBtnMainMenu"> Main Menu </button>
+                <button class="popupBtnNextlvl"> Next level </button>   
+        </div>
+        
+        <div id="lostLevelGeneral">
+                <h3> Too bad ! </h3>
+                <p> So close, would you like to try again ?</p>
+                <p>Your score is: <span class="score"></span></p>
+                <button class="popupBtnMainMenu"> Main Menu </button>
+                <button class="popupBtnRetry"> Retry </button>   
+        </div>
+        
+        <link type="text/html" href="index.html#playerName"/>
+
+        <script src="assets/js/jquery-3.1.0.min.js"></script>
+        <script src="assets/js/game.js"></script>
+    </body>
+</html>

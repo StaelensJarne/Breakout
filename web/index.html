@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Breakworld</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="assets/style/reset.css">
+        <link rel="stylesheet" type="text/css" href="assets/style/style.css">
+        <link rel="shortcut icon" type="image/png" href="images/background/logo.png"/>
+        <!-- hard refresh ctrl + F5 -->
+    </head>
+    <body>
+        
+        <header>
+            <img src="images/game/back1.png" alt="back" title="back" id="back"/>
+            <h1>BREAKWORLD</h1>
+        </header>
+        
+        <main>
+            
+            <div id="mainMenu">
+                <button id="startGame">Start game</button>
+                <button id="highscores">Highscores</button>
+                <button id="about">Game info</button>
+            </div>    
+            
+            <form action="#" method="get" id="nameForm">
+                <h2>Choose your name</h2>
+                <input type="text"  autofocus required="required" id="playerName" placeholder="Enter your name"/>
+                <input type="submit" value="Play" id="playSingleplayer" class="play"/>
+            </form>
+            
+            <form action="#" method="get" id="nameFormMultiplayer">
+                <h2>Choose your names</h2>
+                <input type="text" required="required" id="playerNameMultiplayer1" placeholder="Player 1"/><span> & </span>
+                <input type="text" required="required" id="playerNameMultiplayer2" placeholder="Player 2"/>
+                <input type="submit" value="Play" id="playMultiplayer" class="play"/>
+            </form>
+            
+            <div id="gameType">
+                <h2>choose game mode</h2>
+                <button id="singlePlayer">Singleplayer</button>
+                <button id="multiPlayer">Multiplayer</button>
+            </div>
+            
+            <div id="gameDifficulty">
+                <button id="easy" value="easy" type="button">Easy</button>
+                <button id="medium" value="medium" type="button">Medium</button>
+                <button id="hard" value="hard" type="button">Hard</button>
+            </div>
+            
+                    
+            <div id="showHighscores">
+            </div>
+            
+            <div id="gameInfo">
+                <article>
+                    <h3>Power ups</h3>
+                    <img src="assets/media/PU-bredere balk.png" alt="PU-bredere balk"/>
+                    <p>The paddle gets bigger.</p>
+                    <img src="assets/media/PU-extra life.png" alt="PU-extra life"/>
+                    <p>You win an extra life.</p>
+                    <img src="assets/media/PU-power ball.png" alt="PU-power ball"/>
+                    <p>The ball does not collide with blocks, it destroys every block on its path.</p>
+                    <img src="assets/media/PU-snellere balk.png" alt="PU-snellere balk"/>
+                    <p>The paddle goes faster, this makes it easier to navigate.</p>
+                </article>
+                <article>
+                    <h3>Power downs</h3>
+                    <img src="assets/media/PD-smallere balk.png" alt="PD-smallere balk"/>
+                    <p>The paddle gets smaller.</p>
+                    <img src="assets/media/PD-lost life.png" alt="PD-lost life"/>
+                    <p>You lose a life.</p>
+                    <img src="assets/media/PD- flashing ball.png" alt="PD-flashing ball"/>
+                    <p>The ball flashes, this makes it harder to keep track of.</p>                   
+                    <img src="assets/media/PD-tragere balk.png" alt="PD-tragere balk"/>
+                    <p>The paddle goes slower, this makes it harder to bounce the ball back up.</p>
+                </article>
+            </div>
+
+            
+        </main>
+        
+        <footer>
+                <p> Breakworld made by students of Howest Bruges</p>
+        </footer>
+        
+        <script src="assets/js/jquery-3.1.0.min.js"></script>
+        <script src="assets/js/index.js"></script>
+    </body>
+</html>
