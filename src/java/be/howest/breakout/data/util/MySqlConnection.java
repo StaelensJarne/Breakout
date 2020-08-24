@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
+/*
  *
  * @author jarne
  */
@@ -19,7 +19,7 @@ public class MySqlConnection {
     
     private static final String USR = "usrbreakout";
     private static final String PWD = "TIbreakout2017";    
-    private static final String URL = "jdbc:mysql://localhost:8080/breakout&useSSL=false";
+    private static final String URL =  "jdbc:mysql://localhost:3306/breakout?useSSL=false&serverTimezone=UTC";
     
     private static Connection conn; 
     
@@ -27,7 +27,7 @@ public class MySqlConnection {
     {
         try
         {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         }
         catch (ClassNotFoundException ex)
         {

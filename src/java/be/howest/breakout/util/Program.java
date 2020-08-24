@@ -8,7 +8,7 @@ package be.howest.breakout.util;
 import be.howest.breakout.data.Repositories;
 import be.howest.breakout.domain.Boss;
 import be.howest.breakout.domain.PowerUp;
-import be.howest.breakout.sockets.GameEndpoint;
+import be.howest.breakout.socket.GameEndpoint;
 
 
 
