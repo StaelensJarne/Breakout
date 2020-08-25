@@ -1,3 +1,5 @@
+"Teseting file changes ... 33 ";
+
 var socket = false;
 var url = "ws://localhost:8080/Breakout/index";
 
@@ -10,6 +12,7 @@ var backToStartScreen = function () {
 };
 
 var enterNameSingleplayer = function(){
+    console.log("Choose Player Name.")
     hideEverything();
     displaybackbutton();
     $("#nameForm").show();
@@ -26,7 +29,7 @@ var enterNameMultiplayer = function(){
 
 var chooseGameType = function(e){
     e.preventDefault();
-    console.log("chooseGameMode"); 
+    console.log("Choose Game Mode."); 
     hideEverything();
     displaybackbutton();
     $("#gameType").show();
@@ -35,7 +38,7 @@ var chooseGameType = function(e){
 
 var chooseDiffuculty = function (e){
     e.preventDefault();
-    console.log("chooseDiffuculty");
+    console.log("Choose Game Diffuculty.");
     hideEverything();  
     var name = $("#playerName").val();
     console.log("player"+name);
@@ -100,7 +103,7 @@ var chooseMultiPlayerType = function () {
 };
 
 var startGame = function () {
-    console.log("startGame");
+    console.log("Start Game.");
     var difficulty = $(this).attr("value");
     console.log(difficulty);
     //socket.send("difficulty "+difficulty);
@@ -158,7 +161,7 @@ var hideEverything = function(){
     
 $( document ).ready(function() {
     socket = new WebSocket(url);
-    socket.onopen = function(){console.log("socket ready");};
+    socket.onopen = function(){console.log("Socket Ready!");};
     socket.onmessage = function(evt){
         console.log(JSON.parse(evt.data));
         console.log(evt.data);    
@@ -166,19 +169,14 @@ $( document ).ready(function() {
     hideEverything();
     hidebackbutton();
     
-    $("#mainMenu").show();
-    
-    $("#back").on("click",backToStartScreen);
-    
+    $("#mainMenu").show();   
+    $("#back").on("click",backToStartScreen);  
     $("#startGame").on("click",chooseGameType);
     $("#highscores").on("click",showHighscores);
-    $('#about').on('click',showGameInfo);
-       
+    $('#about').on('click',showGameInfo);    
     $("#singlePlayer").on("click", enterNameSingleplayer);
-    $("#multiPlayer").on("click", enterNameMultiplayer);
-    
+    $("#multiPlayer").on("click", enterNameMultiplayer);  
     $("#playSingleplayer").on('click',chooseDiffuculty);
-    $("#playMultiplayer").on('click',chooseMultiPlayerDiffuculty);
-    
+    $("#playMultiplayer").on('click',chooseMultiPlayerDiffuculty);   
     $("#easy, #medium, #hard").on("click",startGame);   
 });

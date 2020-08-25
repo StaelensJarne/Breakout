@@ -22,25 +22,11 @@ import static java.lang.Integer.parseInt;
 @ServerEndpoint("/game")
 public class GameEndpoint {
     
-    private String objectsWithPowers;
+    private String objectsWithPowers = "";
 
     @OnOpen
     public void onOpen(Session session) {
         generateArrayBlocks(session);
-    }
-
-
-    private void generatePallet(Session session) {       
-//        List<Block> blocksList = Repositories.getBlockRepository().getBlocks();
-//        String blocksInJSON = "[";
-//        for (int half = 0; half < blocksList.size() * 2; half++) {
-//            Collections.shuffle(blocksList);
-//            blocksInJSON += blocksList + ",";
-//        }
-//        blocksInJSON = blocksInJSON.substring(0, blocksInJSON.length() - 1);
-//        blocksInJSON += "]";
-//
-//        sendToSession(session, blocksInJSON, "generateBlocks");
     }
 
     @OnMessage
@@ -66,7 +52,6 @@ public class GameEndpoint {
                 } else {
                     putRandomPowerInBlock(message, in);
                 }
-
             }
         }
         return null;
@@ -74,8 +59,7 @@ public class GameEndpoint {
 
     @OnError
     public void onError(Session session, Throwable t) {
-        System.out.println(t);
-        //throw new BreakoutException(StringConstants.SOCKET_ON_ERROR, (Exception) t);
+        throw new BreakoutException(StringConstants.SOCKET_ON_ERROR, (Exception) t);
     }
 
     private void sendToSession(Session out, String message, String type) {
@@ -108,7 +92,6 @@ public class GameEndpoint {
         sendToSession(session, arrayWithObjectsWithPowers, "BlocksWithPowers");
     }
 
-
     private void generateArrayBlocks(Session session) {
         List<Block> blocksList = Repositories.getBlockRepository().getBlocks();
         String blocksInJSON = "[";
@@ -118,11 +101,11 @@ public class GameEndpoint {
         }
         blocksInJSON = blocksInJSON.substring(0, blocksInJSON.length() - 1);
         blocksInJSON += "]";
-
+        
         sendToSession(session, blocksInJSON, "generateBlocks");
     }
 
-    private String generateArrayOfPowers() { // waarden zijn niet uniek ????
+    private String generateArrayOfPowers() {
         List<Power> powers = Repositories.getPowerRepository().getPowers();
         String powersInJSON = "[";
         for (int i = 0; i < powers.size(); i++) {
@@ -142,7 +125,6 @@ public class GameEndpoint {
         }
         powersInJSON += "]";
         return powersInJSON;
-        //return String.format(JSONMessages.genereateArrayOfPowers, powersInJSON );
     }
 
     public String generateArrayOfBosses() {
@@ -172,7 +154,6 @@ public class GameEndpoint {
         } catch (BreakoutException ex) {
             System.out.println(ex);
         }
-
         return String.format(JSONMessages.updateHealth, name, damage);
     }
 

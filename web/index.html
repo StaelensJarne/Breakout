@@ -7,51 +7,41 @@
         <link rel="stylesheet" type="text/css" href="assets/style/reset.css">
         <link rel="stylesheet" type="text/css" href="assets/style/style.css">
         <link rel="shortcut icon" type="image/png" href="images/background/logo.png"/>
-        <!-- hard refresh ctrl + F5 -->
     </head>
-    <body>
-        
+    <body>       
         <header>
             <img src="images/game/back1.png" alt="back" title="back" id="back"/>
             <h1>BREAKWORLD</h1>
         </header>
-        
         <main>          
             <div id="mainMenu">
                 <button id="startGame">Start game</button>
                 <button id="highscores">Highscores</button>
                 <button id="about">Game info</button>
             </div>    
-            
             <form action="#" method="get" id="nameForm">
                 <h2>Choose your name</h2>
                 <input type="text"  autofocus required="required" id="playerName" placeholder="Enter your name"/>
                 <input type="submit" value="Play" id="playSingleplayer" class="play"/>
             </form>
-            
             <form action="#" method="get" id="nameFormMultiplayer">
                 <h2>Choose your names</h2>
                 <input type="text" required="required" id="playerNameMultiplayer1" placeholder="Player 1"/><span> & </span>
                 <input type="text" required="required" id="playerNameMultiplayer2" placeholder="Player 2"/>
                 <input type="submit" value="Play" id="playMultiplayer" class="play"/>
-            </form>
-            
+            </form>            
             <div id="gameType">
                 <h2>choose game mode</h2>
                 <button id="singlePlayer">Singleplayer</button>
                 <button id="multiPlayer">Multiplayer</button>
-            </div>
-            
+            </div>            
             <div id="gameDifficulty">
                 <button id="easy" value="easy" type="button">Easy</button>
                 <button id="medium" value="medium" type="button">Medium</button>
                 <button id="hard" value="hard" type="button">Hard</button>
-            </div>
-            
-                    
+            </div>                  
             <div id="showHighscores">
-            </div>
-            
+            </div>        
             <div id="gameInfo">
                 <article>
                     <h3>Power ups</h3>
@@ -75,16 +65,12 @@
                     <img src="assets/media/PD-tragere balk.png" alt="PD-tragere balk"/>
                     <p>The paddle goes slower, this makes it harder to bounce the ball back up.</p>
                 </article>
-            </div>
-
-            
+            </div>         
         </main>
-        
         <footer>
-                <p> Breakworld made by students of Howest Bruges</p>
+                <p>Breakworld made by students of Howest Bruges</p>
         </footer>
-        
-        <script src="assets/js/jquery.js"></script>
-        <script src="assets/js/index.js"></script>
+        <script src="assets/js/jquery.js" type="text/javascript"></script>
+        <script src="assets/js/index.js" type="text/javascript"></script>
     </body>
 </html>
