@@ -329,12 +329,8 @@ var setName = function () {
 
 function putPowersInEachBlocks(arrayOfBlocks) {
     impureBlocks = arrayOfBlocks;
-    console.log(impureBlocks);
-    console.log(arrayOfBlocks);
     for (var eachSubArrayOfBlocks = 0; eachSubArrayOfBlocks < arrayOfBlocks.length; eachSubArrayOfBlocks++) {
         var randomBlock = arrayOfBlocks[eachSubArrayOfBlocks][Math.floor(Math.random() * 5)];
-        console.log(randomBlock);
-        console.log(JSON.stringify(randomBlock));
         socket.send(JSON.stringify(randomBlock));
     }
     socket.send("giveObjectsWithPowers");
@@ -355,14 +351,9 @@ $(document).ready(function () {
             case "generateBlocks":
                 putPowersInEachBlocks(JSON.parse(data));
                 break;
-            case "BlocksWithPowers":
-                console.log(data);
-                
-                var pureData = data.replace(/null/g,"");
-                console.log(pureData);
-                
+            case "BlocksWithPowers":                
+                var pureData = data.replace(/null/g,"");            
                 ArrayWithBlocksAndPowers = JSON.parse(pureData);
-                console.log(ArrayWithBlocksAndPowers);
                 replaceBlocksByBlocksWithPowers(ArrayWithBlocksAndPowers);
                 break;
             default :
