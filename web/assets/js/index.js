@@ -25,8 +25,8 @@ var enterNameMultiplayer = function(){
 };
 
 var chooseGameType = function(e){
-    console.log("chooseGameType");
     e.preventDefault();
+    console.log("chooseGameMode"); 
     hideEverything();
     displaybackbutton();
     $("#gameType").show();
@@ -37,14 +37,14 @@ var chooseDiffuculty = function (e){
     e.preventDefault();
     console.log("chooseDiffuculty");
     hideEverything();  
-    var name1 = $("#playerName").val();
-    console.log(name1);
+    var name = $("#playerName").val();
+    console.log("player"+name);
     var nameObject = {
-        name1: name1,
+        name1: name,
         type: "sp"
     };
     storeName(nameObject);    
-    socket.send("player "+name1); 
+    socket.send("player "+name); 
     $("#gameDifficulty").show();
      
 };
@@ -60,8 +60,7 @@ var showGameInfo = function (){
 var storeName = function (nameObject) {
     if (typeof Storage !== void(0)) {
         localStorage.setItem("name", JSON.stringify(nameObject));
-    }
-    else {
+    } else {
         alert("Try another browser to play BreakWorld");
     }
 };

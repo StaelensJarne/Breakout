@@ -27,7 +27,7 @@ public class MySqlBlockRepositoryTester {
     @Test
     public void testAddBlock(){
         try {
-            Block b = new Block("paars",22, 20);
+            Block b = new Block("paars",22,20);
             Repositories.getBlockRepository().addBlock(b);
         } catch(BreakoutException ex){
             Assert.fail();
@@ -37,7 +37,7 @@ public class MySqlBlockRepositoryTester {
     @Test
     public void testGetBlockId(){
         try{
-            Block b = new Block("#F7B32B", 75, 40);
+            Block b = new Block("groen",75,40);
             int id = Repositories.getBlockRepository().getBlockId(b);
         } catch(BreakoutException ex){
             Assert.fail();
@@ -50,7 +50,8 @@ public class MySqlBlockRepositoryTester {
             Block b = new Block("zwart");
             Repositories.getBlockRepository().getBlockId(b);
             Assert.fail();
-        } catch(BreakoutException ex){}
+        } catch(BreakoutException ex){
+            //Do nothing!
+        }
     }
-    
 }

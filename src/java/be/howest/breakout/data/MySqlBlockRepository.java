@@ -29,15 +29,13 @@ public class MySqlBlockRepository extends MySqlConnection implements BlockReposi
 
     @Override
     public List<Block> getBlocks() {
-
         try (PreparedStatement prep = getConnection().prepareStatement(SqlConstants.SQL_SELECT_ALL_BLOCKS);
-                ResultSet res = prep.executeQuery();) {
+             ResultSet res = prep.executeQuery();) {
             List<Block> blokken = new ArrayList<>();
             while (res.next()) {
                 Block b = createBlock(res);
                 blokken.add(b);
             }
-
             return blokken;
         } catch (SQLException ex) {
             throw new BreakoutException(StringConstants.UNABLE_TO_GET_ALL_BLOCKS, ex);

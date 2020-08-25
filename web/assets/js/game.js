@@ -3,8 +3,7 @@ var socket = false;
 var canvas = document.getElementById("canvasBreakout");
 if (canvas.getContext) {
     var ctx = canvas.getContext("2d");
-}
-else {
+} else {
     alert("Your browser does not support canvas. Try another.");
 }
 
@@ -12,7 +11,6 @@ var level = 1;
 
 var life = new Image();
 life.src = 'images/game/favorite-heart-button.png';
-//ctx.rect(palletX, midHeight, palletWidth, rectangleHeight);
 var midWidth = canvas.width / 2;
 var midHeight = canvas.height - 80;
 var palletWidth = 150;
@@ -44,7 +42,7 @@ var keys = {
     "left": false,
     "right": false
 };
-//hier worden de attributen aangevuld vanuit sockets
+
 var ball={};
 var pallet={};
 
@@ -112,8 +110,6 @@ function palletCollision() {
 }
 
 function drawBlocks() {
-    //context.rect(x,y,width,height);
-
     var yCoordForNextBlock = 40;
 
     for (var row = 0; row < generatedBlocks.length; row++) {
@@ -141,7 +137,6 @@ function drawBlocks() {
 }
 
 function drawPallet() {
-    //context.rect(x,y,width,height);
     ctx.beginPath();
     ctx.rect(palletX, midHeight, palletWidth, rectangleHeight);
     ctx.fillStyle = "#006666";
@@ -152,7 +147,6 @@ function drawPallet() {
 }
 
 function drawBall() {
-    //context.arc(x,y,r,sAngle,eAngle,counterclockwise);
     ctx.beginPath();
     ctx.arc(ballX, ballY, radius, 0, 2 * Math.PI, false);
     ctx.fillStyle = "#006666";
@@ -182,8 +176,6 @@ function drawScore() {
 }
 
 function drawLives() {
-    // 	context.drawImage(img,x,y);
-    //	context.drawImage(img,x,y,width,height);
     var x = 16;
     var y = canvas.height - 20;
 
@@ -204,7 +196,6 @@ function reset() {
 }
 
 function draw() {
-
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBall();
     drawPallet();
@@ -232,10 +223,6 @@ function draw() {
             $("canvas").hide();
             $("#lostLevelGeneral").show();
             $('.score').append(score);
-            
-            // alert("Game over! You lost the game!");
-
-
         }
         else {
             reset();
@@ -262,12 +249,10 @@ function draw() {
             if (block.shown === false) {
                 totalBlocks--;
                 if (totalBlocks === 0) {
-                    // alert("Great, get ready to next level!");
                     $("#nextLevelGeneral").show();
                     $('.score').text(score);
                     $("#lostLevelGeneral").hide();
                     $("canvas").hide();
-                    //document.location.reload();
                 }
             }
         }
@@ -282,7 +267,6 @@ function retryGame() {
 function nextLevel() {
     level++;
     document.location.reload();
-    //ctx.fillText("Stage 1 - Level 2", canvas.width / 2, 25);
 }
 
 function toMainMenu() {
@@ -360,12 +344,7 @@ function putPowersInEachBlocks(arrayOfBlocks) {
 $(document).ready(function () {
     socket = new WebSocket("ws://localhost:8080/Breakout/game");
 
-
     socket.onopen = function () {
-        //socket.send("generateBlocks");
-        //socket.send("generatePowerUpDowns");
-        //socket.send("generateBoss 2");
-
     };
 
     socket.onmessage = function (evt) {
@@ -377,8 +356,9 @@ $(document).ready(function () {
                 putPowersInEachBlocks(JSON.parse(data));
                 break;
             case "BlocksWithPowers":
-                var pureData = data.replace("null", "");
-                //console.log(pureData);
+                console.log(data);
+                var pureData = data.replace("null","");
+                console.log(pureData);
                 
                 ArrayWithBlocksAndPowers = JSON.parse(pureData);
                 console.log(ArrayWithBlocksAndPowers);
@@ -391,7 +371,6 @@ $(document).ready(function () {
         draw();
         playerName = setName();
     };
-
 
     $(".popupBtnRetry").on('click', retryGame);
     $(".popupBtnNextlvl").on('click', nextLevel);
